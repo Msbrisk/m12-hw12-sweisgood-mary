@@ -55,10 +55,11 @@ body {
 .nav__link, .nav__link--active {
   text-decoration: none;
   color: var(--primary);
-  padding: 10px 20px; /* Added horizontal padding for consistency */
-  text-align: left; /* Left align the text */
-  display: block; /* Ensure the link takes up full width for consistency */
+  padding: 10px 0; /* Set uniform padding for all links */
+  text-align: center; /* Center-align the text */
+  display: block; /* Ensure the link takes up full width */
   width: 100%; /* Ensures the link stretches across */
+  font-size: 1.2rem; /* Ensure consistent text size for all links */
 }
 
 .nav__link::after, .nav__link--active::after {
@@ -147,3 +148,4 @@ body {
     grid-template-columns: 1fr; /* 1 image per row for small screens */
   }
 }
+``
