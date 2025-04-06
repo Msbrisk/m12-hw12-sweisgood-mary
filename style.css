@@ -19,6 +19,17 @@ body {
       "footer";
   }
 
+  @media screen and (max-width: 768px) {
+  .img_card__container {
+    padding: 15px; /* Reduce padding for smaller screens */
+  }
+}
+
+ .img_card {
+  margin-bottom: 20px; /* Add spacing between image cards */
+  border-radius: 5px; /* Optional: add rounded corners to the image cards */
+}
+ 
   .nav__container {
     width: 80vw;
     min-width: 300px;
