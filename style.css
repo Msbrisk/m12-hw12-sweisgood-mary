@@ -12,8 +12,8 @@ body {
   box-sizing: border-box;
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two columns for desktop */
-  grid-template-rows: auto auto auto; /* Three rows for desktop */
+  grid-template-columns: 200px 1fr; /* Menu column and image grid column */
+  grid-template-rows: auto 1fr auto; /* Header, content (image grid), and footer */
   grid-template-areas:
     "header header"
     "nav img_card__container"
@@ -26,6 +26,8 @@ body {
   display: grid;
   align-items: center;
   justify-items: center;
+  grid-column: 1 / -1; /* Ensure the header spans the entire width */
+  padding: 20px 0;
 }
 
 .header__title {
@@ -34,24 +36,112 @@ body {
   font-family: 'Pacifico', cursive;
 }
 
-.nav__container {
+.nav {
+  background-color: var(--white);
   box-shadow: var(--gray) 4px 4px 10px 2px;
-  display: grid;
-  row-gap: 24px;
-  grid-template-columns: 1fr;
-  min-width: 200px;
-  justify-items: center;
-  padding: 12px 0 24px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-items: flex-start;
 }
 
-.nav__link, .nav__link--active {
+.nav__container {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.nav__link,
+.nav__link--active {
   text-decoration: none;
   color: var(--primary);
-  position: relative;
+  padding: 10px 0;
+  text-align: left;
 }
+
 .nav__link::after, .nav__link--active::after {
   position: absolute;
   content: "";
   bottom: 0;
   left: 50%;
   margin-left: -90px;
+  border-bottom: var(--primary) 1px solid;
+  width: 180px;
+}
+
+.nav__link--active {
+  box-shadow: inset var(--highlight) 200px 0px 0px 1px;
+  padding: 0 70px;
+}
+
+.img_card__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 images across on desktop */
+  grid-auto-rows: 350px; /* Fixed height for image cards */
+  gap: 20px; /* Space between images */
+  padding: 20px;
+  justify-items: center; /* Center the images within their grid cells */
+}
+
+.img_card {
+  display: flex;
+  flex-direction: column; /* Stack image and text vertically */
+  justify-content: flex-start; /* Align items at the top */
+  width: 100%; /* Ensure the card takes the full width of the grid cell */
+  text-align: center; /* Center the text horizontally */
+}
+
+.img_card__img {
+  width: 100%; /* Ensure the image stretches to fill the card */
+  height: 70%; /* The image takes 70% of the height of the card */
+  object-fit: cover; /* Maintain aspect ratio while cropping if necessary */
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.img_card__text {
+  padding: 12px; /* Padding around the text */
+  font-size: 1rem; /* Adjust text size */
+  color: var(--gray); /* Text color */
+}
+
+.footer {
+  grid-area: footer;
+  text-align: center;
+  padding: 20px;
+  background-color: var(--primary);
+  color: var(--white);
+  width: 100%; /* Ensure footer spans the full width */
+}
+
+.img_card {
+  margin-bottom: 20px; /* Add spacing between image cards */
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 1100px) {
+  body {
+    grid-template-columns: 1fr; /* One column on smaller screens */
+    grid-template-rows: auto auto auto auto; /* Four rows */
+    grid-template-areas:
+      "header"
+      "nav"
+      "img_card__container"
+      "footer";
+  }
+
+  .nav__container {
+    width: 100%;
+    grid-template-columns: 1fr; /* Stack links vertically */
+  }
+
+  .img_card__container {
+    grid-template-columns: repeat(2, 1fr); /* 2 images across for medium screens */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .img_card__container {
+    grid-template-columns: 1fr; /* 1 image per row for small screens */
+  }
+}
