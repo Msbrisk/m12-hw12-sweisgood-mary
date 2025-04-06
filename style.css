@@ -1,3 +1,20 @@
+
+.header {
+  background-color: #001f3d; /* Navy blue */
+  color: var(--white); /* White text color */
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+/* White font for the header title */
+.header__title {
+  font-size: 3rem;
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+  color: #ffffff; /* Ensure the title is white */
+}
+
 body {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two columns for desktop */
