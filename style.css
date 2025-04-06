@@ -1,20 +1,16 @@
-.header {
-  background-color: #001f3d; /* Navy blue */
-  color: var(--white); /* White text color */
-  display: grid;
-  align-items: center;
-  justify-items: center;
-}
-
-/* White font for the header title */
-.header__title {
-  font-size: 3rem;
-  margin: 0;
-  font-family: 'Pacifico', cursive;
-  color: #ffffff; /* Ensure the title is white */
+:root {
+  --primary: hsl(217, 99%, 26%);
+  --gray: hsl(217, 11%, 64%);
+  --white: hsl(216, 100%, 95%);
+  --highlight: rgba(251, 255, 38, 0.493);
 }
 
 body {
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.2rem;
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two columns for desktop */
   grid-template-rows: auto auto auto; /* Three rows for desktop */
@@ -22,6 +18,92 @@ body {
     "header header"
     "nav img_card__container"
     "footer footer";
+}
+
+.header {
+  background-color: var(--primary);
+  color: var(--white);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.header__title {
+  font-size: 3rem;
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+}
+
+.nav__container {
+  box-shadow: var(--gray) 4px 4px 10px 2px;
+  display: grid;
+  row-gap: 24px;
+  grid-template-columns: 1fr;
+  min-width: 200px;
+  justify-items: center;
+  padding: 12px 0 24px;
+}
+
+.nav__link, .nav__link--active {
+  text-decoration: none;
+  color: var(--primary);
+  position: relative;
+}
+.nav__link::after, .nav__link--active::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 50%;
+  margin-left: -90px;
+  border-bottom: var(--primary) 1px solid;
+  width: 180px;
+}
+
+.nav__link--active {
+  box-shadow: inset var(--highlight) 200px 0px 0px 1px;
+  padding: 0 70px;
+}
+
+.img_card__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 pictures across on laptop screens */
+  grid-auto-rows: 350px; /* Set a fixed height for image cards */
+  gap: 20px; /* Space between the images */
+  padding: 20px;
+  justify-items: center; /* Center the images within their grid cells */
+  align-items: start; /* Align images at the top of their grid cells */
+}
+
+.img_card {
+  display: flex;
+  flex-direction: column; /* Stack image and text vertically */
+  justify-content: flex-start; /* Align items at the top */
+  width: 100%; /* Ensure the card takes the full width of the grid cell */
+  text-align: center; /* Center the text horizontally */
+}
+
+.img_card__img {
+  width: 100%; /* Ensure the image stretches to fill the card */
+  height: 70%; /* The image takes 70% of the height of the card */
+  object-fit: cover; /* Maintain aspect ratio while cropping if necessary */
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.img_card__text {
+  padding: 12px; /* Padding around the text */
+  font-size: 1rem; /* Adjust text size */
+  color: var(--gray); /* Text color */
+}
+
+.footer {
+  grid-area: footer;
+  text-align: center;
+  padding: 20px;
+}
+
+.img_card {
+  margin-bottom: 20px; /* Add spacing between image cards */
 }
 
 @media screen and (max-width: 1100px) {
@@ -35,35 +117,6 @@ body {
       "footer";
   }
 
-  @media screen and (max-width: 768px) {
-  /* Container for the image cards */
-.img_card__container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 pictures across */
-  grid-auto-rows: 350px; /* Set a fixed height for image cards */
-  gap: 20px; /* Add spacing between images */
-  padding: 20px;
-  justify-items: center; /* Center the images within their grid cells */
-  align-items: center; /* Align images vertically within their grid cells */
-}
-
-/* Ensure each image card is centered */
-.img_card {
-  display: flex;
-  justify-content: center; /* Center the image inside the card */
-  align-items: center; /* Vertically center the image inside the card */
-  width: 100%; /* Ensure the card takes full width of the grid cell */
-}
-
-.img_card__img {
-  width: 100%; /* Make sure the image stretches to fill the card */
-  height: 100%; /* Ensure the image maintains its aspect ratio */
-  object-fit: cover; /* Crop the image to fit the card */
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-}
-
- 
   .nav__container {
     width: 80vw;
     min-width: 300px;
@@ -78,28 +131,14 @@ body {
   .nav__link::after, .nav__link--active::after {
     display: none; /* Remove active link underline on small screens */
   }
+
+  .img_card__container {
+    grid-template-columns: repeat(2, 1fr); /* 2 pictures across for medium screens (e.g., tablets) */
+  }
 }
 
-.img_card__container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Auto-fill columns */
-  grid-auto-rows: 350px; /* Set a fixed height for image cards */
-  gap: 20px;
-  padding: 20px;
+@media screen and (max-width: 768px) {
+  .img_card__container {
+    grid-template-columns: 1fr; /* 1 picture per row for small screens (e.g., phones) */
+  }
 }
-
-.nav__link--active {
-  padding: 0 20px;
-  box-shadow: inset var(--highlight) 200px 0px 0px 1px;
-}
-
-.footer {
-  grid-area: footer;
-  text-align: center;
-  padding: 20px;
-}
-
-.img_card {
-  margin-bottom: 20px; /* Add spacing between image cards */
-}
-
