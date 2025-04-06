@@ -22,12 +22,16 @@ body {
   .nav__container {
     width: 80vw;
     min-width: 300px;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns on smaller screens */
+    grid-template-columns: 1fr; /* Stack links vertically */
   }
 
-  /* Remove active link underline on small screens */
+  .nav__link {
+    padding: 10px;
+    text-align: center; /* Center-align links */
+  }
+
   .nav__link::after, .nav__link--active::after {
-    display: none;
+    display: none; /* Remove active link underline on small screens */
   }
 }
 
@@ -39,25 +43,18 @@ body {
   padding: 20px;
 }
 
-@media screen and (max-width: 1100px) {
-  .nav__container {
-    grid-template-columns: 1fr; /* Stack links vertically */
-  }
-
-  .nav__link {
-    padding: 10px;
-    text-align: center; /* Center-align links */
-  }
-}
-
 .nav__link--active {
   padding: 0 20px;
   box-shadow: inset var(--highlight) 200px 0px 0px 1px;
 }
 
-@media screen and (max-width: 1100px) {
-  .nav__link--active {
-    padding: 0; /* Remove padding for smaller screens */
-  }
+.footer {
+  grid-area: footer;
+  text-align: center;
+  padding: 20px;
+}
+
+.img_card {
+  margin-bottom: 20px; /* Add spacing between image cards */
 }
 
