@@ -49,14 +49,16 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0;
+  width: 100%;
 }
 
-.nav__link,
-.nav__link--active {
+.nav__link, .nav__link--active {
   text-decoration: none;
   color: var(--primary);
-  padding: 10px 0;
-  text-align: left;
+  padding: 10px 20px; /* Added horizontal padding for consistency */
+  text-align: left; /* Left align the text */
+  display: block; /* Ensure the link takes up full width for consistency */
+  width: 100%; /* Ensures the link stretches across */
 }
 
 .nav__link::after, .nav__link--active::after {
