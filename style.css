@@ -56,7 +56,7 @@ body {
   padding: 0;
 }
 
-.nav__link, .nav__link--active {
+.nav__link {
   text-decoration: none;
   color: var(--primary);
   padding: 10px 0;
@@ -70,7 +70,7 @@ body {
 
 .nav__link--active {
   box-shadow: inset var(--highlight) 200px 0px 0px 1px;
-  padding: 0 70px;
+  padding: 10px 0; /* Remove extra padding for active link */
 }
 
 .img_card__container {
@@ -115,28 +115,3 @@ body {
 
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 1100px) {
-  body {
-    grid-template-columns: 1fr; /* One column layout on small screens */
-    grid-template-rows: auto auto auto auto;
-    grid-template-areas:
-      "header"
-      "nav"
-      "img_card__container"
-      "footer";
-  }
-
-  .nav__container {
-    width: 100%;
-    grid-template-columns: 1fr;
-  }
-
-  .img_card__container {
-    grid-template-columns: repeat(2, 1fr); /* 2 images across on medium screens */
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .img_card__container {
-    grid-template-columns: 1fr; /* 1 image per row on small screens */
-  }
-}
