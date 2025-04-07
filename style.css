@@ -12,7 +12,7 @@ body {
   box-sizing: border-box;
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 200px 1fr; /* Left menu column and main content area */
+  grid-template-columns: 200px 1fr; /* Left menu column and right content */
   grid-template-rows: auto 1fr auto; /* Header, content (image grid), and footer */
   grid-template-areas:
     "header header"
@@ -26,7 +26,7 @@ body {
   display: grid;
   align-items: center;
   justify-items: center;
-  grid-column: 1 / -1; /* Make the header span across all columns */
+  grid-column: 1 / -1; /* Ensure the header spans the entire width */
   padding: 20px 0;
 }
 
@@ -41,9 +41,9 @@ body {
   box-shadow: var(--gray) 4px 4px 10px 2px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 0; /* Removed extra padding */
   justify-items: flex-start;
-  width: 200px; /* The menu box will be this wide */
+  width: 200px; /* Menu box width */
   position: relative;
 }
 
@@ -51,19 +51,19 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin-top: 80px; /* To create space for the fixed header */
+  margin-top: 0; /* Ensure no extra space on top */
 }
 
 .nav__link {
   text-decoration: none;
   color: var(--primary);
   padding: 15px 0;
-  text-align: left; /* Ensure all items align to the left */
+  text-align: left; /* Ensure all items align left */
   display: block;
-  width: 100%;
+  width: 100%; /* Make sure each item takes full width */
   font-size: 1.2rem;
   margin: 0;
-  border-bottom: 1px solid var(--primary); /* Underline each menu item */
+  border-bottom: 1px solid var(--primary); /* Underline the links */
   position: relative;
 }
 
@@ -72,5 +72,16 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%; /* Ensure underline spans the entire width */
-  border-bottom
+  width: 100%; /* Make sure the underline spans the entire width */
+  border-bottom: var(--primary) 1px solid; /* Underline each link */
+}
+
+.nav__link--active {
+  padding: 15px 0;
+  box-shadow: inset var(--highlight) 200px 0px 0px 1px;
+}
+
+.img_card__container {
+  display: grid;
+  grid-template-columns
+
