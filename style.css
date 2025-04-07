@@ -54,101 +54,23 @@ body {
   margin-top: 80px; /* To create space for the fixed header */
 }
 
-.nav__link,
-.nav__link--active {
+.nav__link {
   text-decoration: none;
   color: var(--primary);
   padding: 15px 0;
-  text-align: left;
+  text-align: left; /* Ensure all items align to the left */
   display: block;
   width: 100%;
   font-size: 1.2rem;
   margin: 0;
   border-bottom: 1px solid var(--primary); /* Underline each menu item */
+  position: relative;
 }
 
-.nav__link::after, .nav__link--active::after {
-  position: absolute;
+.nav__link::after {
   content: "";
+  position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
-  border-bottom: var(--primary) 1px solid;
-}
-
-.nav__link--active {
-  padding: 0 50px;
-  box-shadow: inset var(--highlight) 200px 0px 0px 1px;
-}
-
-.img_card__container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 images across on desktop */
-  grid-auto-rows: 350px; /* Fixed height for image cards */
-  gap: 20px; /* Space between images */
-  padding: 20px;
-  justify-items: center; /* Center the images within their grid cells */
-}
-
-.img_card {
-  display: flex;
-  flex-direction: column; /* Stack image and text vertically */
-  justify-content: flex-start; /* Align items at the top */
-  width: 100%; /* Ensure the card takes the full width of the grid cell */
-  text-align: center; /* Center the text horizontally */
-}
-
-.img_card__img {
-  width: 100%; /* Ensure the image stretches to fill the card */
-  height: 70%; /* The image takes 70% of the height of the card */
-  object-fit: cover; /* Maintain aspect ratio while cropping if necessary */
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-}
-
-.img_card__text {
-  padding: 12px; /* Padding around the text */
-  font-size: 1rem; /* Adjust text size */
-  color: var(--gray); /* Text color */
-}
-
-.footer {
-  grid-area: footer;
-  text-align: center;
-  padding: 20px;
-  background-color: var(--primary);
-  color: var(--white);
-  width: 100%; /* Ensure footer spans the full width */
-}
-
-/* Media Queries for Responsiveness */
-@media screen and (max-width: 1100px) {
-  body {
-    grid-template-columns: 1fr; /* One column layout for smaller screens */
-    grid-template-rows: auto auto auto auto; /* Four rows for small screens */
-    grid-template-areas:
-      "header"
-      "nav"
-      "img_card__container"
-      "footer";
-  }
-
-  .nav {
-    width: 100%; /* Ensure the nav takes full width on smaller screens */
-    position: relative;
-  }
-
-  .nav__container {
-    margin-top: 0;
-  }
-
-  .img_card__container {
-    grid-template-columns: repeat(2, 1fr); /* 2 images across for medium screens */
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .img_card__container {
-    grid-template-columns: 1fr; /* 1 image per row for small screens */
-  }
-}
+  width: 100%; /* Ensure underline spans the entire width */
+  border-bottom
