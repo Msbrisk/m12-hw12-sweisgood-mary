@@ -2,7 +2,7 @@
   --primary: hsl(217, 99%, 26%);
   --gray: hsl(217, 11%, 64%);
   --white: hsl(216, 100%, 95%);
-  --highlight: rgba(251, 255, 38, 0.493); /* Yellow highlight */
+  --highlight: rgba(251, 255, 38, 0.493);
 }
 
 body {
@@ -68,7 +68,7 @@ body {
   box-sizing: border-box; /* Ensure padding does not affect width */
 }
 
-/* Underline for all menu items */
+/* Ensuring underline and highlight appear consistently */
 .nav__link::after {
   content: "";
   position: absolute;
@@ -78,16 +78,14 @@ body {
   border-bottom: var(--primary) 1px solid; /* Underline each link */
 }
 
-/* Highlight and underline for active link */
 .nav__link--active {
-  box-shadow: inset var(--highlight) 200px 0px 0px 1px; /* Yellow highlight */
-  padding: 0 20px; /* Padding for active link */
+  box-shadow: inset var(--highlight) 200px 0px 0px 1px;
 }
 
-/* Ensure "Work" is aligned like other items */
+/* For active link and highlight effect consistency */
 .nav__link:nth-child(3) {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 20px; /* Align "Work" with others */
+  padding-right: 20px; /* Ensure the padding is the same on both sides */
 }
 
 .img_card__container {
@@ -135,4 +133,34 @@ body {
 }
 
 /* Media Queries for Responsiveness */
-@media screen
+@media screen and (max-width: 1100px) {
+  body {
+    grid-template-columns: 1fr; /* One column layout for smaller screens */
+    grid-template-rows: auto auto auto auto; /* Four rows for small screens */
+    grid-template-areas:
+      "header"
+      "nav"
+      "img_card__container"
+      "footer";
+  }
+
+  .nav {
+    width: 100%; /* Ensure the nav takes full width on smaller screens */
+    position: relative;
+  }
+
+  .nav__container {
+    margin-top: 0;
+  }
+
+  .img_card__container {
+    grid-template-columns: repeat(2, 1fr); /* 2 images across for medium screens */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .img_card__container {
+    grid-template-columns: 1fr; /* 1 image per row for small screens */
+  }
+}
+
