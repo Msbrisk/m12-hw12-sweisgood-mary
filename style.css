@@ -12,7 +12,7 @@ body {
   box-sizing: border-box;
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 200px 1fr; /* Menu column and image grid column */
+  grid-template-columns: 200px 1fr; /* Left menu column and main content area */
   grid-template-rows: auto 1fr auto; /* Header, content (image grid), and footer */
   grid-template-areas:
     "header header"
@@ -26,7 +26,7 @@ body {
   display: grid;
   align-items: center;
   justify-items: center;
-  grid-column: 1 / -1; /* Ensure the header spans the entire width */
+  grid-column: 1 / -1; /* Make the header span across all columns */
   padding: 20px 0;
 }
 
@@ -43,19 +43,15 @@ body {
   flex-direction: column;
   padding: 20px;
   justify-items: flex-start;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 200px;
-  height: 100%;
+  width: 200px; /* The menu box will be this wide */
+  position: relative;
 }
 
 .nav__container {
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin-top: 80px; /* To account for the fixed position */
+  margin-top: 80px; /* To create space for the fixed header */
 }
 
 .nav__link,
@@ -68,7 +64,7 @@ body {
   width: 100%;
   font-size: 1.2rem;
   margin: 0;
-  border-bottom: 1px solid var(--primary);
+  border-bottom: 1px solid var(--primary); /* Underline each menu item */
 }
 
 .nav__link::after, .nav__link--active::after {
@@ -128,8 +124,8 @@ body {
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 1100px) {
   body {
-    grid-template-columns: 1fr; /* One column on smaller screens */
-    grid-template-rows: auto auto auto auto; /* Four rows */
+    grid-template-columns: 1fr; /* One column layout for smaller screens */
+    grid-template-rows: auto auto auto auto; /* Four rows for small screens */
     grid-template-areas:
       "header"
       "nav"
@@ -137,9 +133,13 @@ body {
       "footer";
   }
 
+  .nav {
+    width: 100%; /* Ensure the nav takes full width on smaller screens */
+    position: relative;
+  }
+
   .nav__container {
-    width: 100%;
-    grid-template-columns: 1fr; /* Stack links vertically */
+    margin-top: 0;
   }
 
   .img_card__container {
@@ -152,3 +152,4 @@ body {
     grid-template-columns: 1fr; /* 1 image per row for small screens */
   }
 }
+
