@@ -12,7 +12,7 @@ body {
   box-sizing: border-box;
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 200px 1fr; /* Left menu column and right content */
+  grid-template-columns: 200px 1fr; /* Left menu column and main content area */
   grid-template-rows: auto 1fr auto; /* Header, content (image grid), and footer */
   grid-template-areas:
     "header header"
@@ -26,7 +26,7 @@ body {
   display: grid;
   align-items: center;
   justify-items: center;
-  grid-column: 1 / -1; /* Ensure the header spans the entire width */
+  grid-column: 1 / -1; /* Make the header span across all columns */
   padding: 20px 0;
 }
 
@@ -41,9 +41,9 @@ body {
   box-shadow: var(--gray) 4px 4px 10px 2px;
   display: flex;
   flex-direction: column;
-  padding: 0; /* Removed extra padding */
+  padding: 20px;
   justify-items: flex-start;
-  width: 200px; /* Menu box width */
+  width: 200px; /* The menu box will be this wide */
   position: relative;
 }
 
@@ -51,41 +51,34 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin-top: 0; /* Ensure no extra space on top */
+  margin-top: 80px; /* To create space for the fixed header */
 }
 
 .nav__link {
   text-decoration: none;
   color: var(--primary);
   padding: 15px 0;
-  text-align: left; /* Ensure all items align left */
+  text-align: left; /* Ensure all items align to the left */
   display: block;
-  width: 100%; /* Make sure each item takes full width */
+  width: 100%;
   font-size: 1.2rem;
   margin: 0;
-  border-bottom: 1px solid var(--primary); /* Underline the links */
+  border-bottom: 1px solid var(--primary); /* Underline each menu item */
   position: relative;
-  box-sizing: border-box; /* Ensure padding does not affect width */
 }
 
-/* Ensuring underline and highlight appear consistently */
 .nav__link::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%; /* Ensure the underline spans the entire width */
-  border-bottom: var(--primary) 1px solid; /* Underline each link */
+  width: 100%; /* Ensure underline spans the entire width */
+  border-bottom: var(--primary) 1px solid; /* Add underline to the links */
 }
 
 .nav__link--active {
+  padding: 15px 0;
   box-shadow: inset var(--highlight) 200px 0px 0px 1px;
-}
-
-/* For active link and highlight effect consistency */
-.nav__link:nth-child(3) {
-  padding-left: 15px; /* Align "Work" with others */
-  padding-right: 20px; /* Ensure the padding is the same on both sides */
 }
 
 .img_card__container {
@@ -128,10 +121,6 @@ body {
   width: 100%; /* Ensure footer spans the full width */
 }
 
-.img_card {
-  margin-bottom: 20px; /* Add spacing between image cards */
-}
-
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 1100px) {
   body {
@@ -163,4 +152,3 @@ body {
     grid-template-columns: 1fr; /* 1 image per row for small screens */
   }
 }
-
