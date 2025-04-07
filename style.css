@@ -84,7 +84,7 @@ body {
 
 /* For active link and highlight effect consistency */
 .nav__link:nth-child(3) {
-  padding-left: 20px; /* Align "Work" with others */
+  padding-left: 15px; /* Align "Work" with others */
   padding-right: 20px; /* Ensure the padding is the same on both sides */
 }
 
